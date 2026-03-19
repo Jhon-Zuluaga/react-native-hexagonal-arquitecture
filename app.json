@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Hexagonal-app",
+    "name": "HexaTask",
     "slug": "Hexagonal-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,10 +21,26 @@
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.jhonzuluaga.Hexagonalapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "22c09fe9-2879-4764-ae98-57dd99eba0ea"
+      }
+    },
+    "owner": "jhon-zuluaga",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/22c09fe9-2879-4764-ae98-57dd99eba0ea"
+    },
+    "plugins": [
+      "expo-sharing"
+    ]
   }
 }
