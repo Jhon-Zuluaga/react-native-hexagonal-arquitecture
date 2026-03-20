@@ -139,4 +139,16 @@ export const taskStyle = StyleSheet.create({
     fontSize: 15,
   },
 
+  pdfBtn: {
+  backgroundColor: '#e8f8f2',
+  paddingHorizontal: 14,
+  paddingVertical: 8,
+  borderRadius: 8,
+},
+pdfBtnText: {
+  color: '#1D9E75',
+  fontWeight: '600',
+  fontSize: 14,
+},
+
 })
