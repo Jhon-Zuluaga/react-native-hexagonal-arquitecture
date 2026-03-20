@@ -1,70 +1,122 @@
 import { useState } from "react";
 import { useAuthStore } from "../stores/authStore";
-import { ActivityIndicator, Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  ActivityIndicator,
+  Alert,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  useColorScheme,
+  View,
+} from "react-native";
 import { registerStyle } from "../../../styles/registerStyle";
 
-
 type Props = {
-    navigation: any;
+  navigation: any;
 };
 
-export const RegisterScreen = ({ navigation }: Props) =>{
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const { register, isLoading, error} = useAuthStore();
+export const RegisterScreen = ({ navigation }: Props) => {
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === "dark";
 
-    const handleRegister = async () => {
-        const success = await register(name, email, password);
-        if(!success && error) Alert.alert('Error', error)
-    };
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { register, isLoading, error } = useAuthStore();
 
-    return(
-        <View style={registerStyle.container}>
-            <Text style={registerStyle.title}>Crear cuenta</Text>
-            <Text style={registerStyle.subtitle}>Únete para empezar!</Text>
+  const handleRegister = async () => {
+    const success = await register(name, email, password);
+    if (!success && error) Alert.alert("Error", error);
+  };
 
-            <TextInput 
-            style={registerStyle.input}
-            placeholder="Nombre"
-            placeholderTextColor="#999" 
-            value={name}
-            onChangeText={setName}
-            />
-            <TextInput 
-            style={registerStyle.input}
-            placeholder="Email"
-            placeholderTextColor="#999" 
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-            autoCapitalize="none"
-            />
-             <TextInput 
-            style={registerStyle.input}
-            placeholder="Contraseña (mín. 6 caracteres)"
-            placeholderTextColor="#999" 
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-            />
+  return (
+    <View
+      style={[
+        registerStyle.container,
+        { backgroundColor: isDark ? "#121212" : "#fff" },
+      ]}
+    >
+      <Text
+        style={[registerStyle.title, { color: isDark ? "#fff" : "#1a1a2e" }]}
+      >
+        Crear cuenta
+      </Text>
+      <Text
+        style={[registerStyle.subtitle, { color: isDark ? "#aaa" : "#666" }]}
+      >
+        Únete para empezar!
+      </Text>
 
-            {error && <Text style={registerStyle.error}>{error}</Text>}
-            
-            <TouchableOpacity
-            style={registerStyle.button}
-            onPress={handleRegister}
-            disabled={isLoading}
-            >
-                {isLoading ? <ActivityIndicator color="fff" /> : 
-                <Text style={registerStyle.buttonText}>Registrarse</Text>}
-            </TouchableOpacity>
+      <TextInput
+        style={[
+          registerStyle.input,
+          {
+            backgroundColor: isDark ? "#2a2a2a" : "#fff",
+            borderColor: isDark ? "#444" : "#ddd",
+            color: isDark ? "#fff" : "#000",
+          },
+        ]}
+        placeholder="Nombre"
+        placeholderTextColor={isDark ? "#666" : "#999"}
+        value={name}
+        onChangeText={setName}
+      />
+      <TextInput
+        style={[
+          registerStyle.input,
+          {
+            backgroundColor: isDark ? "#2a2a2a" : "#fff",
+            borderColor: isDark ? "#444" : "#ddd",
+            color: isDark ? "#fff" : "#000",
+          },
+        ]}
+        placeholder="Email"
+        placeholderTextColor={isDark ? "#666" : "#999"}
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        autoCapitalize="none"
+      />
+      <TextInput
+        style={[
+          registerStyle.input,
+          {
+            backgroundColor: isDark ? "#2a2a2a" : "#fff",
+            borderColor: isDark ? "#444" : "#ddd",
+            color: isDark ? "#fff" : "#000",
+          },
+        ]}
+        placeholder="Contraseña (mín. 6 caracteres)"
+        placeholderTextColor={isDark ? "#666" : "#999"}
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+      />
 
-            <TouchableOpacity
-            onPress={() => navigation.goBack()}>
-                <Text style={registerStyle.link}>¿Ya tienes una cuenta? Inicia Sesión</Text>
-            </TouchableOpacity>
-            
-        </View>
-    );
+      {error && <Text style={registerStyle.error}>{error}</Text>}
+
+      <TouchableOpacity
+        style={registerStyle.button}
+        onPress={handleRegister}
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <ActivityIndicator color="fff" />
+        ) : (
+          <Text style={registerStyle.buttonText}>Registrarse</Text>
+        )}
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Text
+          style={[
+            registerStyle.link,
+            { color: isDark ? "#a89cf7" : "#534AB7" },
+          ]}
+        >
+          ¿Ya tienes una cuenta? Inicia Sesión
+        </Text>
+      </TouchableOpacity>
+    </View>
+  );
 };

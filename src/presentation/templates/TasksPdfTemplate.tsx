@@ -1,25 +1,30 @@
 import { Task } from "../../domain/entities/Task";
 
-
-
 interface PDFTemplateParams {
   userName: string;
   tasks: Task[];
 }
 
-export const generateTasksPDFTemplate = ({ userName, tasks }: PDFTemplateParams): string => {
-  const completadas = tasks.filter(t => t.completed);
-  const pendientes = tasks.filter(t => !t.completed);
+export const generateTasksPDFTemplate = ({
+  userName,
+  tasks,
+}: PDFTemplateParams): string => {
+  const completadas = tasks.filter((t) => t.completed);
+  const pendientes = tasks.filter((t) => !t.completed);
 
-  const fecha = new Date().toLocaleDateString('es-CO', { dateStyle: 'long' });
-  const hora = new Date().toLocaleString('es-CO');
+  const fecha = new Date().toLocaleDateString("es-CO", { dateStyle: "long" });
+  const hora = new Date().toLocaleString("es-CO");
 
-  const renderTareas = (lista: Task[], tipo: 'pendiente' | 'completada') =>
-    lista.map(t => `
+  const renderTareas = (lista: Task[], tipo: "pendiente" | "completada") =>
+    lista
+      .map(
+        (t) => `
       <div class="task ${tipo}">
-        ${tipo === 'completada' ? '✓' : '☐'} ${t.title}
+        ${tipo === "completada" ? "✓" : "☐"} ${t.title}
       </div>
-    `).join('');
+    `,
+      )
+      .join("");
 
   return `
     <html>
@@ -44,15 +49,17 @@ export const generateTasksPDFTemplate = ({ userName, tasks }: PDFTemplateParams)
         <p>Lista de tareas de ${userName} — ${fecha}</p>
 
         <h2>Pendientes <span class="badge badge-p">${pendientes.length}</span></h2>
-        ${pendientes.length === 0
-          ? '<p class="empty">¡No hay tareas pendientes!</p>'
-          : renderTareas(pendientes, 'pendiente')
+        ${
+          pendientes.length === 0
+            ? '<p class="empty">¡No hay tareas pendientes!</p>'
+            : renderTareas(pendientes, "pendiente")
         }
 
         <h2>Completadas <span class="badge badge-c">${completadas.length}</span></h2>
-        ${completadas.length === 0
-          ? '<p class="empty">No hay tareas completadas aún.</p>'
-          : renderTareas(completadas, 'completada')
+        ${
+          completadas.length === 0
+            ? '<p class="empty">No hay tareas completadas aún.</p>'
+            : renderTareas(completadas, "completada")
         }
 
         <footer>Generado con HexaTask • ${hora}</footer>

@@ -56,4 +56,6 @@ export const loginStyle = StyleSheet.create({
     marginTop: 16, 
     fontSize: 15 
   }
+
+  
 })

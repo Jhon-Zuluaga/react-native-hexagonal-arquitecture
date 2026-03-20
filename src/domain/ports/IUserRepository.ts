@@ -4,8 +4,9 @@ import { User } from "../entities/User";
 // AsyncStorage, SQLITE o una api real solo sabe esto:
 
 export interface IUserRepository{
-    findbyEmail (email: string): Promise<User | null>;
+    findByEmail (email: string): Promise<User | null>;
     save(user: User): Promise<void>;
-
+    
     findById(id: string): Promise<User | null>;
+    update(user: User): Promise<void>;
 }

@@ -1,0 +1,137 @@
+import { StyleSheet } from "react-native";
+
+export const getProfileColors = (isDark: boolean) => ({
+  bg: isDark ? "#1e1e1e" : "#ffffff",
+  bg2: isDark ? "#2a2a2a" : "#f8f8fb",
+  text: isDark ? "#ffffff" : "#1a1a2e",
+  subtext: isDark ? "#aaaaaa" : "#888888",
+  border: isDark ? "#444444" : "#eeeeee",
+  inputBg: isDark ? "#333333" : "#f8f8fb",
+  inputBorder: isDark ? "#555555" : "#dddddd",
+});
+
+export const profileStyle = StyleSheet.create({
+  overlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+  },
+  sheet: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    paddingHorizontal: 24,
+    paddingTop: 12,
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowRadius: 20,
+    elevation: 10,
+  },
+  handle: {
+    width: 40,
+    height: 4,
+    borderRadius: 2,
+    alignSelf: "center",
+    marginBottom: 16,
+  },
+  sheetTitle: {
+    fontSize: 22,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+  avatarContainer: {
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  avatar: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    backgroundColor: "#534AB7",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 10,
+  },
+  avatarText: {
+    color: "#fff",
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+  userName: {
+    fontSize: 18,
+    fontWeight: "600",
+    marginBottom: 4,
+  },
+  userEmail: {
+    fontSize: 14,
+  },
+  separator: {
+    height: 1,
+    marginBottom: 8,
+  },
+  fieldRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingVertical: 14,
+    borderBottomWidth: 1,
+  },
+  fieldInfo: { flex: 1 },
+  fieldLabel: { fontSize: 12, marginBottom: 2 },
+  fieldValue: { fontSize: 16, fontWeight: "500" },
+  editFieldBtn: { padding: 8 },
+  editFieldBtnText: { fontSize: 18 },
+  editContainer: {
+    padding: 12,
+    borderRadius: 12,
+    marginBottom: 8,
+    marginTop: 4,
+  },
+  editInput: {
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 12,
+    fontSize: 15,
+    marginBottom: 10,
+  },
+  editActions: {
+    flexDirection: "row",
+    gap: 10,
+    justifyContent: "flex-end",
+  },
+  cancelEditBtn: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 8,
+    backgroundColor: "#f0f0f0",
+  },
+  cancelEditText: { color: "#666", fontWeight: "600" },
+  saveEditBtn: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 8,
+    backgroundColor: "#534AB7",
+  },
+  saveEditText: { color: "#fff", fontWeight: "600" },
+
+  settingsBtn: {
+   position: 'absolute',
+    bottom: 30,
+    right: 24,
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    backgroundColor: '#534AB7',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 6,
+    zIndex: 999,
+  },
+  settingsBtnText: 
+  { fontSize: 24 },
+});

@@ -151,4 +151,11 @@ pdfBtnText: {
   fontSize: 14,
 },
 
+counter: {
+  fontSize: 12,
+  color: '#534AB7',
+  marginTop: 2,
+  fontWeight: '500',
+},
+
 })
